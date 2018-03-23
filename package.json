@@ -1,0 +1,25 @@
+{
+  "name": "ran-cli",
+  "version": "1.0.0",
+  "description": "一个基于vue的快速生成模板页面的东西",
+  "main": "index.js",
+  "scripts": {},
+  "bin": {
+    "ran": "./index.js",
+    "pingpang": "./index.js"
+  },
+  "author": "rianran1993",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "commander": "^2.15.0"
+  }
+}
