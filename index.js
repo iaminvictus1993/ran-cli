@@ -25,5 +25,14 @@ program
     .action((name) => {
         fsOption.mkdir(name)
     })
-
-program.parse(process.argv)
+program.on('--help', () => {
+    console.log('  Examples:')
+    console.log()
+    console.log('    $ vue init dirname')
+    console.log()
+})
+function help() {
+    program.parse(process.argv)
+    if (program.args.length < 1) return program.help()
+}
+help()
