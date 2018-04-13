@@ -20,6 +20,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
-    "commander": "^2.15.0"
+    "commander": "^2.15.0",
+    "download-git-repo": "^1.0.2"
   }
 }

@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 var program = require('commander')
 var fs = require('fs')
+var download = require('download-git-repo')
 
+console.log('processArgv', process.argv)
 // 文件操作
 var fsOption = {
 
@@ -25,10 +27,23 @@ program
     .action((name) => {
         fsOption.mkdir(name)
     })
+
+program
+    .command('download [args...]')
+    .description('下载模板如: ran download rianran1993/html- dir')
+    .action((args) => {
+        console.log(Object.prototype.toString.call(args))
+        download(args[0], args[1], function (err) {
+          console.log(err ? 'Error' : 'Success')
+        })
+    })
+
 program.on('--help', () => {
     console.log('  Examples:')
     console.log()
-    console.log('    $ vue init dirname')
+    console.log('    $ ran init dirname')
+    console.log()    
+    console.log('    $ ran download rianran1993/html- dirname')
     console.log()
 })
 function help() {
