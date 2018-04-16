@@ -1,49 +1,28 @@
 #!/usr/bin/env node
 var program = require('commander')
-var fs = require('fs')
+var chalk = require('chalk')
+var ora = require('ora')
 var download = require('download-git-repo')
 
-console.log('processArgv', process.argv)
-// 文件操作
-var fsOption = {
-
-    // 创建目录
-    mkdir: function(name) {
-        fs.mkdir(name, 0o777, function(err) {
-            if (err) {
-                return console.log(err)
-            }
-            console.log(name + '目录创建成功')
-        })
-
-    }
-}
 program
-    .version('0.0.1')
+    .version(require('./package.json').version)
 
 program
-    .command('init <name>')
-    .description('初始化一个页面的功能')
-    .action((name) => {
-        fsOption.mkdir(name)
-    })
-
-program
-    .command('download [args...]')
-    .description('下载模板如: ran download rianran1993/html- dir')
-    .action((args) => {
-        console.log(Object.prototype.toString.call(args))
-        download(args[0], args[1], function (err) {
-          console.log(err ? 'Error' : 'Success')
+    .command('init <dir>')
+    .description('下载脚手架模板')
+    .action((dir) => {
+        var spinner = ora('开始下载模板...')
+        spinner.start()
+        download('rianran1993/vetemplate', dir, function(err) {
+            spinner.stop()
+            console.log(err ? ('下载模板失败：' + err.message) : '下载模板成功')
         })
     })
 
 program.on('--help', () => {
-    console.log('  Examples:')
+    console.log('  例子:')
     console.log()
-    console.log('    $ ran init dirname')
-    console.log()    
-    console.log('    $ ran download rianran1993/html- dirname')
+    console.log(chalk.green('    $ ran init dirname'))
     console.log()
 })
 function help() {
