@@ -1,7 +1,7 @@
 {
   "name": "ran-cli",
-  "version": "0.0.1",
-  "description": "一个基于vue的快速生成模板页面的东西",
+  "version": "0.0.2",
+  "description": "一个基于vue的快速生成模板页面的东西,用于下载vetemplate(https://github.com/rianran1993/vetemplate)",
   "main": "index.js",
   "scripts": {},
   "bin": {
